@@ -1,48 +1,72 @@
-#include<stdio.h>
-int main (){
-    int n;
-    //printf("Enter the value of n: ");
-    int a[20], b[20];
-    int low, high, mid, i, j,k;
-    printf("\nEnter LOW: ");
-    scanf("%d", &low);
-    printf("\nEnter HIGH: ");
-    scanf("%d", &high);
-    printf("\nEnter the values of the array 1: \n");
-    for(i=low; i<=mid;i++){
-        printf("\nEnter the element: ");
-        scanf("%d",&a[i]);
-    }
-    mid=(low+high)/2;
+#include <stdio.h>
 
-    printf("\nEnter the values of the array 2: \n");
-    for(j=mid+1; i<=high;j++){
-        printf("\nEnter the element: ");
-        scanf("%d",&a[j]);
+int main()
+{
+    int a[20], b[20];
+    int low, high, mid;
+    int i, j, k;
+
+    printf("Enter LOW: ");
+    scanf("%d", &low);
+
+    printf("Enter HIGH: ");
+    scanf("%d", &high);
+
+    mid = (low + high) / 2;
+
+    printf("Enter the values of Array 1 (sorted):\n");
+    for(i = low; i <= mid; i++)
+    {
+        scanf("%d", &a[i]);
     }
-    for(i=low; i<=mid;i++){
-        for(j=mid+1;j<=high;j++){
-            if(a[i]<a[j]){
-                b[k]=a[i];
-                k++;
-            }else if(a[i]>a[j]){
-                b[k]=a[j];
-                k++;
-            }
+
+    printf("Enter the values of Array 2 (sorted):\n");
+    for(i = mid + 1; i <= high; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+
+    i = low;
+    j = mid + 1;
+    k = low;
+
+    while(i <= mid && j <= high)
+    {
+        if(a[i] <= a[j])
+        {
+            b[k] = a[i];
+            i++;
         }
+        else
+        {
+            b[k] = a[j];
+            j++;
+        }
+        k++;
     }
-    while(i<=mid){
-        b[k]=a[i];
+
+    while(i <= mid)
+    {
+        b[k] = a[i];
         i++;
         k++;
     }
-    while(j<=high){
-        b[k]=a[j];
+
+    while(j <= high)
+    {
+        b[k] = a[j];
         j++;
         k++;
     }
-    for(k=low;k<=high;k++){
-        printf("%d ",b[k]);
+
+    printf("\nMerged Array:\n");
+
+    for(k = low; k <= high; k++)
+    {
+        printf("%d ", b[k]);
     }
+
+    printf("\n");
+
     return 0;
 }
